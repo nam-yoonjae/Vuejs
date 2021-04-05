@@ -1,0 +1,121 @@
+<script src="https://unpkg.com/vue"></script>
+<style>
+    div {
+        margin-top:10px;
+    }
+    ul li {
+        margin-top:10px;
+    }
+</style>
+<div id="helloVue">
+    <h2>{{ message }} </h2>
+</div>
+<div>
+    <h3>디렉티브</h3>
+    <ul>
+        <li>디렉티브마다 고유한 기능이 있다.</li>
+        <li>디렉티브는 Vue 에서 제공하는 특수 속성임을 나타내는 v-접두어가 있다.</li>
+        <li>디렉티브는 렌더링된 DOM 에 특수한 반응형 동작을 한다.</li>
+        <li>v-bind:title 은 이 요소의 title속성을 Vue인스턴스의 message 속성으로 최신 상태를 유지한다.</li>
+    </ul>
+</div>
+<div id="app-2">
+    <h3>v-bind</h3>
+    <div>
+        <span v-bind:title="data">
+            이 span 태그에 v-bind 이라는 속성의 디렉티브를 통해 :title을 통해 동적으로 바인딩된 title을 볼 수 있습니다.
+        </span>
+    </div>
+    <div>
+        <span v-bind:title="loadTime">
+            이 span 태그는 loadTime값을 binding합니다.
+        </span>
+    </div>    
+</div>
+<hr/>
+<h3>Class 에 직접 값 바인딩</h3>
+<div class="divSt">
+    <span>Class 에 바인딩 테스트</span><br>
+    <span>{{ text }}</span>
+</div>
+<div class="divSt">
+    <span>Class 에 바인딩 테스트</span><br>
+    <span>{{ text }}</span>
+</div>
+<div class="divSt">
+    <span>Class 에 바인딩 테스트</span><br>
+    <span>{{ text }}</span>
+</div>
+<hr/>
+<div id="app-3">
+    <h3>v-if</h3>
+    <p v-if="seen">v-if를 통해 DOM구조에도 데이터를 바인딩할 수 있음</p>
+    <p v-if="false">false이면 안보인다.</p>
+</div>
+<hr>
+<div id="app-4">
+    <h3>v-for</h3>
+    <p>v-for 디렉티브는 배열의 데이터를 바인딩할 수 있다.</p>
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text}}
+        </li>
+    </ol>
+</div>
+<div id="app-5">
+    <h3>v-on</h3>
+    <p>v-on 디렉티브를 이용하여 Vue 인스턴스에서 메소드를 호출하는 이벤트 리스너를 추가할 수 있다.</p>
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">메시지 뒤집기</button>
+</div>
+<script>    
+    const app = new Vue({
+        el : '#helloVue',
+        data : {
+            message : 'Hello Vue.js!'
+        }
+    })
+    var app2 = new Vue({
+        el : '#app-2',
+        data : {
+            loadTime : '이 페이지는 ' + new Date() + '에 로드 되었습니다.',
+            data : '나는 바인딩 데이터입니다'
+        }
+    })
+    var divSt = new Vue({
+        el : '.divSt',
+        data : {
+            text : '하나만 되는듯'
+        }
+    })
+    var app3 = new Vue({
+        el : '#app-3',
+        data : {
+            seen : true,
+            false : false
+        }
+    })
+    var app4 = new Vue({
+        el : '#app-4',
+        data : {
+            todos : [
+                { text : 'javascript 배우기' },
+                { text : 'Vue 배우기' },
+                { text : '무언가 멋진 것 만들어보기' },
+                { text : 'console에서 app4.todos.push({ text : "새로운 것"}) 을 하면 목록을 추가할 수 있다.' }
+            ]
+        }
+    })
+    var app5 = new Vue({
+        el : '#app-5',
+        data : {
+            message : '뒤집어보세요! Vue.js!'
+        },
+        methods : {
+            reverseMessage : function(){
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+</script>
+        

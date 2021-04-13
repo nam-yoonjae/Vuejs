@@ -15,7 +15,11 @@
                 v-model 을 통해서 값을 받을 수 있다.
                 input 과 data 을 연결해준다.
              -->
-            <input type="number" v-model="value">
+            <!-- 
+                ref 속성은 input 태그에 focus 줄 때 쓸 수 있다.
+                this.$refs.answer 로 접근할 수 있다.
+            -->
+            <input type="number" v-model="value" ref="answer">
             <button type="submit">입력</button>
             <!-- 
                 <div>{{value}}</div> 
@@ -42,13 +46,14 @@
                     return false;
                 }
                 if(parseInt(this.value) === this.first * this.second){
-                    this.result = '정답';
+                    this.result = '정답ㅋ';
                     this.first = Math.ceil(Math.random() * 9);
                     this.second = Math.ceil(Math.random() * 9);
                 } else {
-                    this.result = '땡';
+                    this.result = '틀림ㅋ';
                 }
                 this.value =''
+                this.$refs.answer.focus();
                 
             }
         },

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>좋아요</title>
+</head>
+<body>
+    <div id="root">
+        <!-- 
+            v-on 이 통제하는 디렉티브 중 click이벤트 
+            디렉티브를 선언해서 vue 가 통제할 수 있도록 해주는 느낌
+        -->
+        <div>v-if, else 태그 사이에 뭐가 있으면 안됨 인접해야함</div>
+        <div v-if="liked">좋아요 눌렀음</div>
+        <button v-else v-on:click="onClickButton">좋아요</button>
+
+        <!-- v-if="data값 중에서 관리할 값" -->
+    </div>
+</body>
+<script>
+    // Vue 인스턴스를 생성함
+    const app = new Vue({
+        // root id 를 가진 DOM 을 Vue가 통제한다.
+        el : '#root',
+
+        // 모든 값들은 data 에서 관리한다.
+        data : {
+            // Vue가 관리하게 하고 싶은 변수들이다.
+            // Vue는 항상 data 를 가지고 사고해야한다.
+            
+            // liked 라는 속성을 추가함(좋아요를 눌렀는지 안눌렀는지 판단하는 값)
+            // 항상 동적으로 바뀌는 값이라는 것에 주목
+            liked : false,
+        },
+        methods : {
+            onClickButton() {
+                //this는 data를 가리킨다
+                this.liked = true;
+            },
+        },
+    });
+</script>
+</html>

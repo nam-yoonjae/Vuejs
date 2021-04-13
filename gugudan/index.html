@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>구구단</title>
+</head>
+<body>
+    <div id="root">
+        <div>{{ first }}곱하기 {{ second }} ?</div>
+        <form v-on:submit="onSubmitForm">
+            <!-- 
+                v-model 을 통해서 값을 받을 수 있다.
+                input 과 data 을 연결해준다.
+             -->
+            <input type="number" v-model="value">
+            <button type="submit">입력</button>
+            <!-- 
+                <div>{{value}}</div> 
+                v-model의 value를 여기다가 (쌍방향)바인딩하면 input 타입이 실시간으로 변하는 걸 볼 수 있다.ㅋㅋ
+            -->
+        </form>
+        <div id="result">{{result}}</div>
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        el : '#root',
+        data : {
+            first : Math.ceil(Math.random() * 9),
+            second : Math.ceil(Math.random() * 9),
+            value : '',
+            result : '',
+        },
+        methods : {
+            onSubmitForm(e){
+                e.preventDefault();
+                if(this.value =='') {
+                    alert('정답을 쓰고 누르세용!');
+                    return false;
+                }
+                if(parseInt(this.value) === this.first * this.second){
+                    this.result = '정답';
+                    this.first = Math.ceil(Math.random() * 9);
+                    this.second = Math.ceil(Math.random() * 9);
+                } else {
+                    this.result = '땡';
+                }
+                this.value =''
+                
+            }
+        },
+    });
+</script>
+</html>

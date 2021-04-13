@@ -1,0 +1,42 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="counter">
+    Counter : {{ counter }}
+</div>
+<script>
+new Vue({
+    data : {
+        a : 1,
+        accountList : [
+            { 
+                time : 1,
+                data : "yoonjae"
+            },
+            { 
+                time : 2,
+                data : "dbswodi2"
+            },
+        ],
+        counter : 0
+    },
+    beforeCreated : function() {
+        console.log('beforeCreated');
+    },
+    created : function () {
+        // this 는 vm 인스턴스를 가리킨다.
+        console.log('a is : ' + this.a)
+
+        var accountData = this.accountList;
+        console.log(accountData);
+        var counter = this.counter;
+    },
+    mounted : function() {
+        console.log('mounted');
+    },
+    updated : function() {
+        console.log('updated');
+    },
+    destroy : function() {
+        console.log('destroy');
+    }
+})
+</script>

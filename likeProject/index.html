@@ -17,13 +17,27 @@
         <div v-if="liked">좋아요 눌렀음</div>
         <button v-else v-on:click="onClickButton">좋아요</button>
 
+        <div>
+            <h2>data v-if test</h2>
+            <button v-on:click="clearLoading">눌러봥</button>
+            <span v-if="onLoad">Loading 중</span>
+            <span v-else>loading 이 끝났다.</span><br>
+            <div v-if="rendering">
+                <ul v-for="(item, index) in rendering" :key="index">
+                    <li>{{ item.name }}</li>
+                    <li>{{ item.addr }}</li>
+                    <li>{{ item.tel }}</li>
+                </ul>
+            </div>
+        </div>
         <!-- v-if="data값 중에서 관리할 값" -->
     </div>
 </body>
 <script>
     // Vue 인스턴스를 생성함
     const app = new Vue({
-        // root id 를 가진 DOM 을 Vue가 통제한다.
+        // 여기서 app 을 Vue 의 인스턴스라고 부른다.
+        // root id 를 가진 DOM 을 Vue가 통제할 수 있도록 만들어준다.
         el : '#root',
 
         // 모든 값들은 data 에서 관리한다.
@@ -34,12 +48,44 @@
             // liked 라는 속성을 추가함(좋아요를 눌렀는지 안눌렀는지 판단하는 값)
             // 항상 동적으로 바뀌는 값이라는 것에 주목
             liked : false,
+            onLoad : true,
+            rendering : [
+                {
+                    name : "yoonjae",
+                    addr : "양천구",
+                    tel : "010-8644-9349",
+                },
+                {
+                    name : "doomin",
+                    addr : "신월동",
+                    tel : "010-1234-1941",
+                },
+                {
+                    name : "한승관",
+                    addr : "우왕굳",
+                    tel : "010-1234-1941",
+                },
+                {
+                    name : "양현주",
+                    addr : "방화동",
+                    tel : "010-1234-1941",
+                }
+            ],
         },
         methods : {
             onClickButton() {
-                //this는 data를 가리킨다
+                //this는 data를 가리킨다.
                 this.liked = true;
             },
+            clearLoading() {
+                if(this.onLoad == true) {
+                    this.onLoad = false;
+                    console.log(this.onLoad);
+                } else {
+                    this.onLoad = true;
+                    console.log(this.onLoad);
+                }
+            }
         },
     });
 </script>

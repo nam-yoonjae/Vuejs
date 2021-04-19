@@ -1,5 +1,6 @@
 // path 라는 모듈을 통해 파일 경로 설정할 때 이용
 const path = require('path');
+
 // vue-loader 플러그인
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
@@ -12,6 +13,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // entry 의 directoryname 이랑 파일명을 본다.
 // main.js 를 발견하고 거기를 딱 켠다. 그리고 거기에 import 할 것을 또 읽는다.
 // 근데 웹팩은 자바스크립트만 합쳐주는데 numberbaseball.vue 는 자바스크립트가 아니다.
+// dist 는 webpack build 하면 생기는 폴더이다.
 
 // 2. 그래서 나오는게 rules,
 // entry 로부터 쭉 읽다가 희한한게 나오면 module 에서 rulse 에 따라 처리한다.
@@ -23,11 +25,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // 후처리하는 느낌? output 나오기 직전 plugin이 한번 더 가공해준다는 느낌
 // 4. output : 최종결과물
 
-
-
 // npm install 명령어 내릴 때 특정 버전 언급하려면 @ 이용
 // ex ) npm install vue@2.7.1
-
 
 module.exports = {
     // webpack설정을 한다.

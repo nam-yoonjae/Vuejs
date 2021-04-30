@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <img v-bind:src="fileName" width="250px">
+        <img :src="fileName" width="250px">
+        <p>데이터 바인딩 연습</p>
+        <ul>
+            <li v-for="(item, index) in urlList">
+                <a :href="item.url">{{ item.name }}</a>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            
+            fileName : `apple.jpeg`,
+
+            urlList : [
+                {
+                    url : 'https://google.co.kr',
+                    name : '구글',
+                },
+                {
+                    url : 'https://daum.net',
+                    name : '다음',
+                },
+                {
+                    url : 'https://naver.com',
+                    name : '네이버',
+                }
+
+            ]
+        },
+    })
+</script>
+</html>

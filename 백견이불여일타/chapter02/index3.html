@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <div>
+            <ul>
+                <li v-for="(item, index) in myTea">
+                    이름 : <span v-text="item.name"></span><br/>
+                    가격 : <span v-text="item.price"></span><br/>
+                </li>
+            </ul>
+        </div>
+        <hr/>
+        {{ $data }}
+        <hr/>
+        <li v-for="(item, key) in $data">{{ key }} : {{ item }}</li>
+    </div>
+</body>
+<script>
+    let teaList = [
+        {
+            name : `다즐링`,
+            price : 600,
+        },
+        {
+            name : `얼그레이`,
+            price : 400,
+        },
+        {
+            name : `실론`,
+            price : 500,
+        },
+
+    ]
+    new Vue({
+        el : '#vue',
+        data : {
+            myTea : teaList,
+            myString : `문자열`,
+
+        },
+    })
+</script>
+</html>

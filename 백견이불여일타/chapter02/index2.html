@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <p>{{ numberValue * 2.1}}</p>
+        <p>{{ `이것은 '` + stringValue + `'입니다.` }}</p>
+        <p>{{ booleanValue }}</p>
+        <p>{{ stringValue.substr(1,2) }}</p>
+        <hr/>
+        <p v-text="array1"></p>
+        <p v-text="array1[0]"></p>
+        <p>{{array1[1]}}</p>
+        <p>{{array1[2]}}</p>
+        <p>{{Object1}}</p>
+        <hr/>
+        <p>{{Object1.name}}</p>
+        <p>{{Object1.age}}</p>
+        <hr/>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            numberValue : 12345,
+            stringValue : '문자열',
+            booleanValue : false,
+            array1 : [
+                `다즐링`, `얼그레이`, `실론`
+            ],
+            Object1 : {
+                name : `홍길동`,
+                age : `20`,
+            },
+        },
+    })
+</script>
+</html>

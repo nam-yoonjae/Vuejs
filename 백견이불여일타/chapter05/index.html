@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <h3>클릭하면 +1</h3>
+        <span>{{count}}</span><br>
+        <button @click="countUp">Count up</button>
+        <hr/>
+        <h3>클릭하고 나면 비활성화되는 버튼</h3>
+        <button @click="like" v-bind:disabled="isClicked==true">좋아용!</button>
+        <hr/>
+        <h3>선택한 만큼 처리하는 버튼</h3>
+        <button @click="countParam(3)">3 증가</button>
+        <button @click="countParam(10)">10 증가</button>
+        <button @click="countParam(100)">100 증가</button>
+        {{ countdata }}
+        <hr/>
+        <h3>Enter키를 누르면 alert 하기</h3>
+        <input @keyup.enter="showAlert" v-model="myText">
+        <p>{{myText}}</p>
+        <hr/>
+        <h3>Shift+Enter</h3>
+        <input v-on:keyup.shift.enter="showAlert2" v-model="myText2">
+        <p>{{myText2}}</p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            count : 0,
+            countdata : 0,
+            isClicked : false,
+            myText : '',
+            myText2 : '',
+        },
+        methods : {
+            countUp() {
+                this.count++;
+            },
+            countParam( param ){
+                this.countdata += param;
+            },
+            like () {
+                alert('좋아용!');
+                this.isClicked = true;
+            },
+            showAlert() {
+                alert('Enter키를 누르셨어요');
+            },
+            showAlert2(){
+                alert('shift+enter를 누르셨어요');
+            },
+        },
+    });
+</script>
+</html>

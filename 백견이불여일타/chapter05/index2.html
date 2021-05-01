@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <h3>계산기</h3>
+        <input v-model.number="num1"><br>
+        <input v-model.number="num2"><br>
+        <button @click="addition">덧셈</button>
+        <button @click="subtraction">뺄셈</button>
+        <button @click="multiplication">곱셈</button>
+        <button @click="division">나눗셈</button><br>
+        결과 : {{result}}
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            num1 : 0,
+            num2 : 0,
+            result : 0,
+        },
+        methods : {
+            addition() {
+                this.result = this.num1 + this.num2;
+            },
+            subtraction() {
+                this.result = this.num1 - this.num2;
+            },
+            multiplication() {
+                this.result = this.num1 * this.num2;
+            },
+            division() {
+                this.result = this.num1 / this.num2;
+            },
+
+        },
+    });
+</script>
+</html>

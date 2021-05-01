@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>수식어</title>
+</head>
+<body>
+    <div id="vue">
+        <h3>수식어</h3>
+        <div>
+            <h5>다 쓰고 나서 인스턴스에 입력하고 싶을 때</h5>
+            <input v-model.lazy="lazyData">
+            <p>입력 후 표시 {{ lazyData }}</p>
+        </div>
+        <div>
+            <h5>입력 내용 자동으로 수식으로 변경하고 싶을 때</h5>
+            <input v-model.number="numberData">
+            <p>{{ 100 + numberData}}</p>
+            <input v-model="numberData2">
+            {{ 100 + numberData2 }}
+        </div>
+        <div>
+            <h5>앞뒤 공백을 자동으로 제거하고 싶을때</h5>
+            trim input : <input v-model.trim="trimText">
+            <p>{{trimText}}</p>
+            normal input : <input v-model="notTrimText">
+            <p>{{notTrimText}}</p>
+            
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            
+            lazyData : '',
+            numberData : 0,
+            numberData2 : 0,
+            trimText : '',
+            notTrimText : '',
+        },
+        methods : {
+
+        },
+    });
+</script>
+</html>

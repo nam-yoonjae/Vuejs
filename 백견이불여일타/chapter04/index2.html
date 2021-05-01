@@ -10,7 +10,24 @@
 <body>
     <div id="vue">
         <div>
-            <b>select option 선택한 색으로 문자열 변경</b>
+            <b>select option 선택한 색으로 문자열 변경</b><br>
+            <select v-model="myColor">
+                <option disabled value="">선택하세요</option>
+                <option value="red">빨강</option>
+                <option value="blue">파랑</option>
+                <option value="green">초록</option>
+            </select>
+            <br>선택한 값 : <span v-bind:style="{color:myColor}">{{myColor}}</span>
+        </div>
+        <hr/>
+        <div>
+            <b>복수 처리</b><br>
+            <select v-model="multipleColor" multiple style="width:150px">
+                <option>빨강</option>
+                <option>파랑</option>
+                <option>초록</option>
+            </select>
+            <br>선택한 값 : <span v-text="multipleColor"></span>
         </div>
     </div>
 </body>
@@ -18,7 +35,8 @@
     new Vue({
         el : '#vue',
         data : {
-
+            myColor : '',
+            multipleColor : [],
         },
         methods : {
 

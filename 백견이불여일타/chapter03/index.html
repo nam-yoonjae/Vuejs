@@ -11,12 +11,12 @@
     <div id="vue">
         <img v-bind:src="fileName" width="250px">
         <img :src="fileName" width="250px">
-        <p>데이터 바인딩 연습</p>
+        <p align="center">데이터 바인딩 연습</p>
         <ul>
             <li v-for="(item, index) in urlList">
                 <a :href="item.url">{{ item.name }}</a>
             </li>
-            
+
         </ul>
     </div>
 </body>

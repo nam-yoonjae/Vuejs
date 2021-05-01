@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <input v-model="myName" placeholder="이름">
+        <p>입력한 데이터 : {{ myName }}</p>
+        <textarea v-model="myText" rows="5" cols="40"></textarea>
+        <p>문자수는 {{ myText.length}} 자입니다.</p>
+        <p>입력한 내용 : {{ myText }}</p>
+        <hr/>
+        <input type="checkbox" v-model="checkmodel">
+        <p>체크박스 상태 : {{checkmodel}}</p>
+        <hr/>
+        <div>
+            <label><input type="checkbox" value="red" v-model="myChecks">적</label><br>
+            <label><input type="checkbox" value="green" v-model="myChecks">녹</label><br>
+            <label><input type="checkbox" value="blue" v-model="myChecks">청</label>
+            <p>선택한 색은 : {{myChecks}}</p>
+        </div>
+        <hr/>
+        <div>
+            <b>동의에 체크하면 송신 버튼이 활성화</b>
+            <br><label><input type="checkbox" v-model="isChecked">동의합니다.</label>
+            <br><button v-bind:disabled="!isChecked">송신</button>
+            <!--또는  <br><button v-bind:disabled="isChecked==false">송신</button> -->
+        </div>
+        <hr/>
+        <div>
+            <b>선택한 라디오 버튼 표시하기</b><br>
+            <label><input type="radio" value="red" v-model="myRadio">적</label><br>
+            <label><input type="radio" value="green" v-model="myRadio">녹</label><br>
+            <label><input type="radio" value="blue" v-model="myRadio">청</label><br>
+            선택한 값 : {{myRadio}}
+        </div>
+        <hr/>
+        <div>
+            <b>선택한 radio 버튼에 따라 이미지 다르게 표시하기</b><br>
+            <label><input type="radio" value="grape.png" v-model="imgRadio">포도</label><br>
+            <label><input type="radio" value="apple.jpeg" v-model="imgRadio">사과</label><br>
+            <img v-bind:src="imgRadio" width="120px">
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            myName : '',
+            myText : '',
+            checkmodel : true,
+            myChecks :[],
+            isChecked : false,
+            myRadio : '',
+            imgRadio : '',
+        }
+    });
+</script>
+</html>

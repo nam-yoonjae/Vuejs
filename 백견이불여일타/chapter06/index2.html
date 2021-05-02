@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>  
+    <div id="vue">
+        <div>
+            <h3>버튼으로 리스트에 추가 삭제</h3>
+            <button v-on:click="addLast">맨 뒤에 추가하기</button><br>
+            <button v-on:click="addObj(3)">네번째줄에 추가</button><br>
+            <button @click="changeObj(0)">첫번째를 변경</button><br>
+            <button @click="deleteObj(1)">두번째를 삭제</button>
+            <ul>
+                <li v-for="item in myArray">{{item}}</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            myArray : [ '첫번째', '두번째', '세번째', '네번째', '다섯번째' ],
+        },
+        methods : {
+            addLast() {
+                this.myArray.push('맨뒤에 추가');
+            },
+            addObj( num ) {
+                this.myArray.splice(num, 0, '네번째줄에 추가');
+            },
+            changeObj( num ) {
+                this.myArray.splice(num, 1, '변경');
+            },
+            deleteObj( num ) {
+                this.myArray.splice(num, 1);
+            }
+        },
+    });
+</script>
+</html>

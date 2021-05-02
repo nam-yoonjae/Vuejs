@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <div>
+            <h3>v-if</h3>
+            <label><input type="checkbox" v-model="isChecked">체크표시</label> : {{isChecked}}
+            <br><span v-if="isChecked">체크박스가 ON</span>
+            <span v-else>체크박스가 OFF</span>
+        </div>
+        <div>
+            <h3>v-show</h3>
+            <label><input type="checkbox" v-model="vshowChecked">V-show체크</label>
+            <br><span v-show="vshowChecked">v-shows는 태그존재하되 display:none</span>
+        </div>
+        <div>
+            <h3>v-for</h3>
+            <ul>
+                <li v-for="item in array1">{{item}}</li>
+            </ul>
+            <ul>
+                <li v-for="(item, index) in array1">{{index}} : {{item}}</li>
+            </ul>
+            <ul>
+                <li v-for="(item, index) in objArray">{{index}} : {{item.name}} : {{item.bread}}</li>
+            </ul>
+            <ul>
+                <li v-for="n in 10">{{ n }} X 5 = {{ n * 5 }}</li>
+            </ul>
+            <table>
+                <thead>
+                    <th v-for="item in header">{{item}}</th>
+                </thead>
+                <tbody>
+                    <tr v-for="line in languageData">
+                        <td v-for="data in line">{{data}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            isChecked : false,
+            vshowChecked : false,
+            array1 : [
+                '빵돌이', '빵순이', '잼민이'
+            ],
+            objArray : [
+                {
+                    name : '빵돌이',
+                    bread : '크림빵',
+                },
+                {
+                    name : '빵순이',
+                    bread : '메론빵',
+                },
+                {
+                    name : '잼민이',
+                    bread : '크로와상',
+                },
+            ],
+            header : [
+                '프로그래밍 언어', '2018', '2013', '2008', '2003', '1998'
+            ],
+            languageData : [
+                [ 'Java', '1', '2', '1', '1', '16'],
+                [ 'C', '2', '2', '1', '1', '16'],
+                [ 'C++', '4', '5', '3', '1', '16'],
+                [ 'Python', '3', '2', '3', '1', '16'],
+                [ 'Javascript', '1', '2', '1', '1', '16'],
+            ]
+
+        },
+        methods : {
+
+        },
+    });
+</script>
+<style>
+    table {
+        width:100%;
+        text-align:left;
+    }
+    table th {
+        padding : 12px;
+        border-bottom : 2px solid darkgray;
+    }
+    table td {
+        padding : 12px;
+    }
+    table tr:nth-of-type(even){
+        background-color:rgba(0,0,255,0.1);
+    }
+</style>
+</html>

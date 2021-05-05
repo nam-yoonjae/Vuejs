@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <p>140자 이내로 작성해주세요.</p>
+        <textarea cols="30" rows="10" v-model="myText" maxlength="140"></textarea>
+        <p>남은 글자 : <span v-bind:style="{color:computedColor}">{{ remaining }}</span></p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            myText : "",
+        },
+        computed : {
+            remaining : function() {
+                return 140 - this.myText.length;
+            },
+            computedColor : function() {
+                col = "green";
+                if( this.remaining < 30 ) {
+                    col = "orange";
+                }
+                if( this.remaining < 10 ) {
+                    col = "red";
+                }
+                return col;
+            },
+        },
+    });
+</script>
+</html>

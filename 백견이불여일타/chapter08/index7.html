@@ -36,19 +36,17 @@
             myNumber : 0,
             tweenedNumber : 0,
         },
-        computed : {
-            animeNumber : function() {
-                return '';
-            }
-        },
-        methods : {
-        },
         watch : {
             myNumber() {
-                //TweenMax.
+                TweenMax.to(this.$data, 1, { tweenedNumber : this.myNumber });
             },
 
-        }
+        },
+        computed : {
+            animeNumber : function() {
+                return this.tweenedNumber.toFixed(0);
+            }
+        },
     });
 </script>
 </html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <h1>제한 시간 내에 문자 입력하기</h1>
+        <p>금지 문자 ( , 로 나누어 복수입력 가능) <input type="text" v-model="forbiddenText"></p>
+        <p>제한 시간을 입력하세요 (초) <input type="number" v-model="setTime">
+        <button v-if="!isStarted" v-bind:disabled="isStarted" v-on:click="startTimer">시작</button>
+        <p>남은 시간 {{ setTime }} 초</p>
+        <textarea cols="30" rows="10" v-bind:disabled="!textAreaEdit" v-model="inputText"></textarea>
+        <p>입력한 금지단어 : <span v-for="item in forbiddenList">{{ item }}</span> </p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            forbiddenText : '',
+            forbiddenList : [],
+            setTime : 0,
+            isStarted : false,
+            textAreaEdit : false,
+            timeObj : null,
+            inputText : '',
+        },
+        methods : {
+            startTimer() {
+                this.setForbiddenList();
+                if(!this.checkVal()){
+                    return false;
+                }
+                this.textAreaEdit = true;
+                this.isStarted = true;
+                this.timeObj = setInterval( () => {
+                    this.setTime--;
+                }, 1000);
+            },
+            stopTimer() {
+                clearInterval(this.timeObj);
+            },
+            checkVal() {
+                if(this.forbiddenList.length === 0 ) {
+                    alert('금지문자를 등록하셔야합니다.');
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            },
+            setForbiddenList(){
+                this.forbiddenList = this.forbiddenText.split(',');
+            }
+        },
+        watch : {
+            inputText() {
+                var position = this.inputText.indexOf(this.forbiddenList);
+                if(position != -1) {
+                    alert(`금지 단어는 입력할 수 없어요`);
+                    this.inputText = this.inputText.substr(0, position);
+                    this.setTime = this.setTime + 10;
+                }
+            },
+            setTime() {
+                if(this.setTime == 0) {
+                    alert('시간이 다 됐군요...');
+                }
+            },
+        },
+    });
+</script>
+</html>

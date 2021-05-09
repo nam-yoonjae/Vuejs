@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <h3>문자를 입력하면 그 문자를 포함한 항목만 표시</h3>
+        <input v-model="findWord">
+        <ul>
+            <li v-for="(item, index) in findItems">{{ item }}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el : '#vue',
+        data : {
+            items : [ `설악산`, `한라산`, `북한산`, `백두산`, `지리산`],
+            findWord : ``,
+        },
+        computed : {
+            findItems : function() {
+                if (this.findWord) {
+                    return this.items.filter(function(value) { return (value.indexOf(this.findWord) > -1);
+                    }, this);
+                }
+                else {
+                    // this.findWord 가 공백이면 리스트 전부를 return
+                    return this.items;
+                }
+            }
+        },
+    });
+</script>
+</html>

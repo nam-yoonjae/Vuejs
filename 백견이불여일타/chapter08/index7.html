@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <h3>TweenMax 라이브러리 사용해서 애니메이션 감지</h3>
+        <!-- GSAP 이란?
+        The GreenSock Animation Platform 줄여서 GSAP 
+        프론트엔드 개발자와 디자이너들이 쉽게 사용할 수 있는 강력한 타임라인 기반의
+        애니메이션 자바스크립트 라이브러리 
+        -->
+
+        <!-- Tweens 란?
+        Tweens 란 GSAP 의 기본적인 애니메이션이다.  -->
+        <p>값은 {{ animeNumber }} 입니다.</p>
+        <input type="number" v-model.number="myNumber">
+        <br>
+        <button id="moveBtn" type="button" onclick="myMove()">이동</button>
+    </div>
+</body>
+<script>
+    function myMove() {
+        // moveBtn 은 x 프로퍼티를 1초에 500 증가시킨다.
+        TweenMax.to('#moveBtn', 1, { x: `400px`} );
+    }
+    new Vue({
+        el : '#vue',
+        data : {
+            myNumber : 0,
+            tweenedNumber : 0,
+        },
+        computed : {
+            animeNumber : function() {
+                return '';
+            }
+        },
+        methods : {
+        },
+        watch : {
+            myNumber() {
+                //TweenMax.
+            },
+
+        }
+    });
+</script>
+</html>

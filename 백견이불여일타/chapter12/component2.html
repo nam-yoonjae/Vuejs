@@ -9,9 +9,10 @@
 </head>
 <body>
    <div id="vue">
-      <my-component my-name="철수" my-age="13"></my-component>
-      <my-component my-name="영희" my-age="23"></my-component>
-      <my-component></my-component>
+      <my-component v-for="(item, index) in myArray" 
+                  v-bind:my-name="item.name" 
+                  v-bind:my-age="item.age">
+   </my-component>
    </div>
 </body>
 <script>
@@ -34,6 +35,22 @@
       el : '#vue',
       components : {
          'my-component' : MyComponent
+      },
+      data : {
+         myArray : [
+            {
+               name : "철수",
+               age : 13,
+            },
+            {
+               name : "국영수",
+               age : 23,
+            },
+            {
+               name : "영수",
+               age : 43,
+            },
+         ],
       },
 
    });

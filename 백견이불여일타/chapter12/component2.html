@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+   <div id="vue">
+      <my-component my-name="철수" my-age="13"></my-component>
+      <my-component my-name="영희" my-age="23"></my-component>
+      <my-component></my-component>
+   </div>
+</body>
+<script>
+   var MyComponent = {
+      template : `<p class="my-comp">나는 {{ myName }} 입니다. 나이는 {{ myAge }} 입니다.</p>`,
+      props : {
+         myName : String,
+         myAge : Number
+      },
+      created() {
+         if(this.myName == null) {
+            this.myName = "이름없음";
+         }
+         if(this.myAge == null) {
+            this.myAge = "몇살인지 모름";
+         }
+      },
+   }
+   new Vue({
+      el : '#vue',
+      components : {
+         'my-component' : MyComponent
+      },
+
+   });
+</script>
+</html>

@@ -2,7 +2,7 @@
 // use this for Valina Javascript.
 `use strict`;
 
-// 2. Variable
+// 2. Variable (rw : read/write)
 // let ( added in ES6 )
 let globalName = 'globalName';
 {
@@ -32,7 +32,7 @@ var age;
 }
 console.log(varNumber);
 
-// 3. Constants
+// 3. Constant (r : readonly)
 // 값을 선언한 이 후에는 재 선언 또는 변경이 안됨
 // immutable ( 변경 불가 )
 // favor immutable data type always for a few reasons
@@ -139,3 +139,10 @@ console.log(`value : ${text} , type : ${typeof text}`);
 text = '8' / '2';
 console.log(`value : ${text} , type : ${typeof text}`);
 // 선언할 때 마다 자바스크립트가 이를 인식하고, 그에 맞춰 type 이 변경된다!
+
+// 6. Object
+const yjObject = { 
+   name : 'yoonjae',
+   age : 20,
+}
+console.log(yjObject.name);

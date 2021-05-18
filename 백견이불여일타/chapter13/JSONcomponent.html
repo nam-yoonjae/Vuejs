@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+   <title>Document</title>
+</head>
+<body>
+   <div id="vue">
+      <h3>Sort And Shuffle the JSON Object from Component</h3>
+      <div v-for="item in dataArray" v-bind:key="item.title">
+         <my-component v-bind:object="item"></my-component>
+      </div>
+      <button v-on:click="sortData">Sort</button>
+      <button v-on:click="shuffleData">Shuffle</button>
+   </div>
+</body>
+<script>
+   var MyComponent = {
+      props : ["object"],
+      template : `<div style="width:300px; backgroundColor:#ffddaa;">
+                     <p style="backgroundColor:#ffa95e;">{{object.title}}</p>
+                     <p>개인기 : {{object.body}}</p>
+                  </div>`
+   }
+   new Vue({
+      el : '#vue',
+      data : {
+         dataArray : [
+            {
+               title : '박지은',
+               body : '박리다매다!!'
+            },
+            {
+               title : '노혜린',
+               body : '베이컨없쪄여!'
+            },
+            {
+               title : '임정은',
+               body : '발산등촌강구를 정복'
+            }
+         ]
+      }, 
+      components : {
+         'my-component' : MyComponent
+      },
+      methods : {
+         sortData : function() {
+            this.dataArray.sort(function(a,b) {
+               return (a.title < b.title ? -1 : 1);
+               return 0;
+            });
+         },
+         shuffleData : function() {
+            let buffer = [];
+            let len = this.dataArray.length;
+            for( let i = len; len > 0; len--) {
+               let r = Math.floor(Math.random() * len);
+               buffer.push(this.dataArray[r]);
+               this.dataArray.splice(r,1);
+            }
+            this.dataArray = buffer;
+         }
+      },
+      
+
+   });
+</script>
+</html>

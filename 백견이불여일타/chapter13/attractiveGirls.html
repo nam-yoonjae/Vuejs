@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+   <title>JSON Test</title>
+</head>
+<body>
+   <div id="vue">
+      <h3>개인기 랜덤게임</h3>
+      <div v-for="item in dataArray" v-bind:key="item.title">
+         <my-component :title="item"></my-component>
+      </div>
+      <button v-on:click="start">시작</button>
+      <button v-on:click="stop">정지</button>
+      <button v-on:click="test">test</button>
+   </div>
+</body>
+<script>
+   var MyComponent = {
+      props : ["title"],
+      template : `<div style="width:300px; backgroundColor:#ffddaa;">
+                     <p style="backgroundColor:#ffa95e;">{{title.name}}</p>
+                     <p v-if="title.choice"></p>
+                     <p else>곧 공개될 그녀들의 비밀은?</p>
+                  </div>`
+   }
+   new Vue({
+      el : '#vue',
+      data : {
+         dataArray : [
+            {
+               name : '박지은',
+               choice : '',
+               skills : [
+                  "엽떡먹기 신", "베이컨 딸리기", "방구뀌기", "돈 흥청망청 쓰기", "못생기기", "지각쟁이", "말술",
+                  "운동을 매일 실패하기", "매일 음식을 잘 먹기", "잔액부족입니다.", "후룻볼 40박스 주문하기",
+                  "작심삼일 매일하기", "매일 누군가를 생각하기", "배달 리뷰 정독하기", "무야호"
+               ],
+            },
+            {
+               name : '노혜린',
+               choice : '',
+               skills : [
+                  "엽떡먹기 신", "베이컨 딸리기", "방구뀌기", "돈 흥청망청 쓰기", "못생기기", "지각쟁이", "말술",
+                  "운동을 매일 실패하기", "매일 음식을 잘 먹기", "잔액부족입니다.", "후룻볼 40박스 주문하기",
+                  "작심삼일 매일하기", "매일 누군가를 생각하기", "배달 리뷰 정독하기", "무야호"
+               ],
+            },
+            {
+               name : '임정은',
+               choice : '',
+               skills : [
+                  "엽떡먹기 신", "베이컨 딸리기", "방구뀌기", "돈 흥청망청 쓰기", "못생기기", "지각쟁이", "말술",
+                  "운동을 매일 실패하기", "매일 음식을 잘 먹기", "잔액부족입니다.", "후룻볼 40박스 주문하기",
+                  "작심삼일 매일하기", "매일 누군가를 생각하기", "배달 리뷰 정독하기", "무야호", "주말출근"
+               ],
+            }
+         ],
+         timerOid : null,
+      }, 
+      components : {
+         'my-component' : MyComponent
+      },
+      methods : {
+         start : function() {
+            this.shuffle();
+            this.timerOid = setInterval(this.shuffle, 100);
+         },
+         stop : function() {
+               clearInterval( this.timerOid );
+         },
+         shuffle : function() {
+            const _self = this;
+            let index = Math.floor(Math.random() * 15);
+            this.dataArray.forEach( item => item.choice = item.skills[index]);
+         },
+         test : function() {
+            // let buffer = "";
+            // let _self = this;
+            // this.dataArray.forEach( function ( item) {
+            //    let index = Math.floor(Math.random() * 15);
+            //    _self.dataArray.choice = item.skills[index];
+            // });
+            console.log( this.dataArray[0]);
+            this.dataArray[0].choice = "test";
+         }
+         
+      },
+      
+
+   });
+</script>
+</html>

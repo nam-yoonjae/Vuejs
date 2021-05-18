@@ -33,8 +33,9 @@ var age;
 console.log(varNumber);
 
 // 3. Constant (r : readonly)
+// user Const whenever possible ( 가능하면 const 로 작성하자)
 // 값을 선언한 이 후에는 재 선언 또는 변경이 안됨
-// immutable ( 변경 불가 )
+// immutable ( 변경 불가 ) : primitive types, frozen objects
 // favor immutable data type always for a few reasons
 // 값을 한번 할당한 다음에는 절대 변경되지 않는 데이터 타입을 사용해라.
 // 이유 3가지 

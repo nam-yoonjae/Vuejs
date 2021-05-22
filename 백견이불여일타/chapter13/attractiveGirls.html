@@ -11,8 +11,10 @@
 <body>
    <div id="vue">
       <h3>개인기 랜덤게임</h3>
-      <div v-for="item in dataArray" v-bind:key="item.title">
-         <my-component :title="item"></my-component>
+      <div>
+         <my-component name="임정은" choice="zㅋ"></my-component>
+         <my-component name="박지은"></my-component>
+         <my-component name="노혜린"></my-component>
       </div>
       <button v-on:click="start">시작</button>
       <button v-on:click="stop">정지</button>
@@ -21,12 +23,23 @@
 </body>
 <script>
    var MyComponent = {
-      props : ["title"],
+      props : {
+         name :  String,
+         choice : String,
+      },
+      created : function() {
+         if( this.choice == null ) {
+            this.choice = '그녀들의 비밀은??'
+         }
+      },
       template : `<div style="width:300px; backgroundColor:#ffddaa;">
-                     <p style="backgroundColor:#ffa95e;">{{title.name}}</p>
-                     <p v-if="title.choice"></p>
-                     <p else>곧 공개될 그녀들의 비밀은?</p>
-                  </div>`
+                     <p style="backgroundColor:#ffa95e;">{{name}}</p>
+                     <p>{{choice}}</p>
+                  </div>`,
+      data : function() {
+         return {
+         }
+      },
    }
    new Vue({
       el : '#vue',

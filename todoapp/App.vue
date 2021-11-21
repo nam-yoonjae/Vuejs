@@ -25,5 +25,6 @@ h1 {
 $color : #333;
 h3 {
     color : $color;
+    display:flex;
 }
 </style>

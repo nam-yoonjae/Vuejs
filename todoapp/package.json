@@ -12,6 +12,11 @@
     "vue",
     "todoapp"
   ],
+"browserslist" : [
+  "last 2 versions",
+  "ie >= 10"
+],
+
   "author": "cheeeeze",
   "license": "YJCompany",
   "devDependencies": {

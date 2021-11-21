@@ -15,7 +15,13 @@ module.exports = ( env, opts ) => {
     
     // 상수를 여기에 만든다.
     const config = {
+
         // 개발용과 제품용 둘다 해당되는, 중복 옵션들.
+
+        // 확장자 생략 기능
+        resolve : {
+            extensions : ['.vue','.js']
+        },
 
         // 진입점
         entry : {

@@ -2,6 +2,7 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 require('@babel/polyfill');
 
@@ -63,6 +64,7 @@ module.exports = {
                     to : '',
                 }
             ]
-        })
+        }),
+        new CleanWebpackPlugin()
     ],
 }
